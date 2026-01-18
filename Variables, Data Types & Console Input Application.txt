@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+
+// Primitive data types
+// Console input using Scanner
+// Arithmetic operations
+// Type casting
+// Variable scope (local, instance, static)
+
+public class Calculator {
+    static String applicationName = "Console Calculator";
+    int instanceCounter = 1;
+    double instanceValue = 0.0;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        byte byteVar = 100;           // 1 byte
+        short shortVar = 32000;       // 2 bytes
+        int intVar = 100000;          // 4 bytes
+        long longVar = 10000000000L;  // 8 bytes
+
+        float floatVar = 10.5f;       // 4 bytes
+        double doubleVar = 99.99;     // 8 bytes
+
+        char charVar = 'A';           // 2 bytes (Unicode)
+        boolean booleanVar = true;    // 1 bit (logical)
+
+        System.out.println("Primitive Data Types & Memory Usage:");
+        System.out.println("byte: 1 byte | value = " + byteVar);
+        System.out.println("short: 2 bytes | value = " + shortVar);
+        System.out.println("int: 4 bytes | value = " + intVar);
+        System.out.println("long: 8 bytes | value = " + longVar);
+        System.out.println("float: 4 bytes | value = " + floatVar);
+        System.out.println("double: 8 bytes | value = " + doubleVar);
+        System.out.println("char: 2 bytes | value = " + charVar);
+        System.out.println("boolean: 1 bit | value = " + booleanVar);
+
+
+
+        System.out.print("\nEnter first number: ");
+        if (!scanner.hasNextDouble()) {
+            System.out.println("Invalid input! Please enter a number.");
+            return;
+        }
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter second number: ");
+        if (!scanner.hasNextDouble()) {
+            System.out.println("Invalid input! Please enter a number.");
+            return;
+        }
+        double num2 = scanner.nextDouble();
+        double sum = num1 + num2;
+        double difference = num1 - num2;
+        double product = num1 * num2;
+
+        if (num2 == 0) {
+            System.out.println("⚠ Division by zero is not allowed.");
+        } else {
+            double quotient = num1 / num2;
+            System.out.printf("Division: %.2f / %.2f = %.2f%n", num1, num2, quotient);
+        }
+
+        System.out.printf("Addition: %.2f + %.2f = %.2f%n", num1, num2, sum);
+        System.out.printf("Subtraction: %.2f - %.2f = %.2f%n", num1, num2, difference);
+        System.out.printf("Multiplication: %.2f * %.2f = %.2f%n", num1, num2, product);
+        int castedInt = (int) doubleVar; // Explicit casting (narrowing)
+        double implicitDouble = intVar;  // Implicit casting (widening)
+
+        System.out.println("\nType Casting Examples:");
+        System.out.println("Double to int (explicit): " + castedInt);
+        System.out.println("Int to double (implicit): " + implicitDouble);
+
+        Calculator obj = new Calculator();
+
+        System.out.println("\nVariable Scope:");
+        System.out.println("Local variable num1 = " + num1);
+        System.out.println("Instance variable instanceCounter = " + obj.instanceCounter);
+        System.out.println("Static variable applicationName = " + applicationName);
+
+        scanner.close();
+        System.out.println("\nProgram executed successfully.");
+    }
+}
